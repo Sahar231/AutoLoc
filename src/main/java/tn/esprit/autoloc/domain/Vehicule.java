@@ -1,5 +1,6 @@
 package tn.esprit.autoloc.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -51,8 +52,10 @@ public class Vehicule {
     private Set<Equipement> equipements;
 
     @OneToMany(mappedBy = "vehicule")
+    @JsonIgnore
     private List<Reservation> reservations;
 
     @OneToMany(mappedBy = "vehicule")
+    @JsonIgnore
     private List<Maintenance> maintenances;
 }

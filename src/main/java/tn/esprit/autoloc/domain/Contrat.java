@@ -1,5 +1,6 @@
 package tn.esprit.autoloc.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.Entity;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.GeneratedValue;
@@ -37,6 +38,7 @@ public class Contrat {
     @JoinColumn(name = "reservation_id", unique = true)
     private Reservation reservation;
 
-    @OneToMany(mappedBy = "contrat", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "contrat", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference("contrat-paiements")
     private List<Paiement> paiements;
 }

@@ -1,5 +1,6 @@
 package tn.esprit.autoloc.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -31,8 +32,10 @@ public class Agence {
     private String telephone;
 
     @OneToMany(mappedBy = "agence", fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<Vehicule> vehicules;
 
     @OneToMany(mappedBy = "agence", fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<Employe> employes;
 }

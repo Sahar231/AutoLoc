@@ -1,5 +1,6 @@
 package tn.esprit.autoloc.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -28,5 +29,6 @@ public class Equipement {
     private String libelle;
 
     @ManyToMany(mappedBy = "equipements", fetch = FetchType.LAZY)
+    @JsonIgnore
     private Set<Vehicule> vehicules;
 }

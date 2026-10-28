@@ -1,5 +1,6 @@
 package tn.esprit.autoloc.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.Entity;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.FetchType;
@@ -33,5 +34,6 @@ public class Maintenance {
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "vehicule_id")
+    @JsonIgnoreProperties({"reservations", "maintenances", "equipements"})
     private Vehicule vehicule;
 }
